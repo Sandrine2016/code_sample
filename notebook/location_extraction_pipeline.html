@@ -13972,8 +13972,9 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Location-Extraction-for-NASA-Social-Landslides">Location Extraction for NASA Social Landslides<a class="anchor-link" href="#Location-Extraction-for-NASA-Social-Landslides">&#182;</a></h1><ul>
-<li>Building a logistic regression model to detect whether a sentence contains the gold location description keywords</li>
-<li>Train on the processed NASA example <code>new_filter_train_set.csv</code> and predicted on the <code>article_sample.tsv</code>.</li>
+<li>Built a logistic regression model to detect whether a sentence contains the gold location description keywords.</li>
+<li>Predict the most likely location where the landslide happens and geocoded it into latitude/longitude.</li>
+<li>The processed NASA dataset <code>new_filter_train_set.csv</code> is split into 80% train set, 10% validation/development set and 10% test set.</li>
 </ul>
 
 </div>
@@ -14043,18 +14044,6 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="1.-Data-Cleaning">1. Data Cleaning<a class="anchor-link" href="#1.-Data-Cleaning">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Get the POS/NEG label for each sentence<ul>
-<li>First do exact match: if <code>location_description</code> appears in <code>text</code>, mark the sentence as a positive sentence (<code>pos_setence=Yes</code>), otherwise, mark the sentence as a negative sentence (<code>pos_setence=No</code>).</li>
-<li>Then do partial match: if one or more location entities in the sentence appear in the gold label (<code>location_description</code>), mark the sentence as a positive sentence (<code>pos_setence=Yes</code>), otherwise, mark the sentence as a negative sentence (<code>pos_setence=No</code>).</li>
-</ul>
-</li>
-</ul>
-
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -14242,6 +14231,18 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Get the POS/NEG label for each sentence<ul>
+<li>First do exact match: if <code>location_description</code> appears in <code>text</code>, mark the sentence as a positive sentence (<code>pos_setence=Yes</code>), otherwise, mark the sentence as a negative sentence (<code>pos_setence=No</code>).</li>
+<li>Then do partial match: if one or more location entities in the sentence appear in the gold label (<code>location_description</code>), mark the sentence as a positive sentence (<code>pos_setence=Yes</code>), otherwise, mark the sentence as a negative sentence (<code>pos_setence=No</code>).</li>
+</ul>
+</li>
+</ul>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
